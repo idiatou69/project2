@@ -1,3 +1,29 @@
-.list-group-item {
-  line-height: 2.5;
+main img {
+  width: 100%;
+}
+
+main>div {
+  margin: 20px;
+}
+
+.project {
+  position: relative;
+}
+
+.project>div {
+  padding-bottom: 30px;
+}
+
+@media (min-width: 992px) {
+
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  main img {
+    width: 95%;
+  }
 }
