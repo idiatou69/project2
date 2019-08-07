@@ -6,7 +6,11 @@ module.exports = function(app) {
     db.Username.findAll({
       include: [db.Post]
     }).then(function(dbUsername) {
-      res.json(dbUsername);
+      // res.json(dbUsername);
+      res.render("index", {
+        msg: "Hello!"
+      });
+
       });
     });
  
