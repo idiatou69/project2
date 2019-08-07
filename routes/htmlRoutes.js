@@ -3,20 +3,6 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-<<<<<<< HEAD
-
-    // Boilerplate code given in class on first day of project
-    //
-    // db.Example.findAll({}).then(function(dbExamples) {
-    //   res.render("index", {
-    //     msg: "Welcome!",
-    //     examples: dbExamples
-    //   });
-    // });
-
-    res.render("index", {});
-  });
-=======
     db.Username.findAll({
       include: [db.Post]
     }).then(function(dbUsername) {
@@ -28,7 +14,6 @@ module.exports = function(app) {
       });
     });
  
->>>>>>> master
 
   // Load example page and pass in an example by id
   app.get("/username/:id", function(req, res) {
