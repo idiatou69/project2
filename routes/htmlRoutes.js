@@ -13,6 +13,12 @@ module.exports = function(app) {
 
       });
     });
+
+
+  // Load wishlist page
+  app.get("/wishlist", function (req, res) {
+    res.render("wishlist", {});
+  });
  
 
   // Load example page and pass in an example by id
