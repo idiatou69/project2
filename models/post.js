@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Post.associate = function(models){
     //post(url & category) belongs to one Username
-    Post.belongsTo(models.Author, {
+    Post.belongsTo(models.Username, {
       foreignKey: {
         allowNull: false
         //cannot create post without usename
