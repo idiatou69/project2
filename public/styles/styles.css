@@ -58,10 +58,8 @@ main>div {
 
 }
 
-.footer-logo_container{
-  height: 100%;
-  display:table;
-  float: left;
+footer .logo_container .fab {
+  color: white;
 }
 
 .logo_container h1{
