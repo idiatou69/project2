@@ -1,14 +1,14 @@
 {
   "development": {
-    "username": "root",
-    "password": "password",
+    "username": "andrew",
+    "password": "ThisIsMyPassword",
     "database": "wishList_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": "password",
+    "username": "andrew",
+    "password": "ThisIsMyPassword",
     "database": "wishList_db",
     "host": "localhost",
     "dialect": "mysql",
