@@ -24,6 +24,11 @@ module.exports = function (app) {
     res.render("signup", {});
   });
 
+  // Load login page
+  app.get("/login", function (req, res) {
+    res.render("login", {});
+  });
+
 
   // Load example page and pass in an example by id
   app.get("/username/:id", function (req, res) {
