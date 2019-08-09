@@ -44,11 +44,12 @@ main>div {
 
 }
 
-.inner-footer{
+.inner-footer, .inner_header {
   width: 1000px;
   height: 100%;
   display: block;
   margin: 0 auto;
+  padding-top: 15px;
 }
 
 .logo_container {
@@ -56,10 +57,6 @@ main>div {
   display: block;
   float:left;
 
-}
-
-footer .logo_container .fab {
-  color: white;
 }
 
 .logo_container h1{
@@ -79,7 +76,7 @@ footer .logo_container .fab {
 .navigation{
   float: right;
   height: 100%;
-
+  margin: 0;
 }
 
 .navigation li{
@@ -101,4 +98,10 @@ footer .logo_container .fab {
   font-family: 'Montserrat';
   font-size: 16px;
 
+}
+
+.social-media-icons {
+  color: white;
+  float: right;
+  font-size: 36px;
 }
