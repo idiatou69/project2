@@ -4,7 +4,7 @@ module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
     db.Username.findAll({
-      include: [db.Post]
+      // include: [db.Post]
     }).then(function (dbUsername) {
       // res.json(dbUsername);
       res.render("index", {
