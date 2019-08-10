@@ -1,47 +1,51 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+var $productName = $("#product-name");
+var $productDescription = $("#product-description");
 var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var $productList = $("#product-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  //save the product info in user list (wishlist.html)
+  saveProduct: function(product) {
     return $.ajax({
+      //how to post in user list instead of on page
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/username",
-      data: JSON.stringify(example)
+      url: "api/wishlist",
+      data: JSON.stringify(product)
     });
   },
-  getExamples: function() {
+  getProduct: function() {
     return $.ajax({
-      url: "api/username",
+      url: "api/wishlist",
       type: "GET"
     });
   },
-  deleteExample: function(id) {
+  deleteProduct: function(id) {
+    //either id of product or set value
     return $.ajax({
-      url: "api/username/" + id,
+      url: "api/wishlist" + id,
       type: "DELETE"
     });
   }
 };
 
+//do we need? yes, for when new form is submitted
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+var refreshProductPage = function() {
+  API.getProduct().then(function(data) {
+    var $products = data.map(function(product) {
       var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+        .text(product.name)
+        .attr("href", "/wishlist/" + product.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id
+          "data-id": product.id
         })
         .append($a);
 
@@ -54,32 +58,33 @@ var refreshExamples = function() {
       return $li;
     });
 
-    $exampleList.empty();
-    $exampleList.append($examples);
+    $productList.empty();
+    $productList.append($products);
   });
 };
 
+//have model button with form to input info -- on submit, close modal
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var productChosen = {
+    name: $productName.val().trim(),
+    description: $productDescription.val().trim()
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  if (!(productChosen.name && productChosen.description)) {
+    alert("You must enter a product name and description!");
     return;
   }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  API.saveProduct(productChosen).then(function() {
+    refreshProductPage();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $productName.val("");
+  $productDescription.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -89,11 +94,11 @@ var handleDeleteBtnClick = function() {
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  API.deleteProduct(idToDelete).then(function() {
+    refreshProductPage();
   });
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$productList.on("click", ".delete", handleDeleteBtnClick);

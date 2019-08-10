@@ -3,12 +3,11 @@ var db = require("../models");
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    db.Username.findAll({
-      include: [db.Post]
-    }).then(function (dbUsername) {
-      // res.json(dbUsername);
+    db.ProductList.findAll({
+      // include: [db.Post]
+    }).then(function (dbProductList) {
       res.render("index", {
-        msg: "Hello!"
+        products: dbProductList
       });
     });
   });
@@ -31,9 +30,12 @@ module.exports = function (app) {
 
 
   // Load example page and pass in an example by id
-  app.get("/username/:id", function (req, res) {
-    db.Username.findOne({ where: { id: req.params.id } }).then(function (dbUsername) {
-      res.json(dbUsername);
+  app.get("/wishlist/:id", function (req, res) {
+    db.ProductList.findOne({ where: { id: req.params.id } }).then(function (dbProductList) {
+      res.render("product",{
+        product: dbProductList
+      });
+
     });
   });
 
