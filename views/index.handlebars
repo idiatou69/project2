@@ -48,12 +48,12 @@ want to save --}}
 
        <form class="clearfix mb-4" action="POST">
           <div class="form-group">
-            <label for="product-name">Product Name</label>
-            <input type="text" id="product-name" class="form-control" aria-describedby="product-name" placeholder="Enter Product Name">
+            <label for="product-wished-for-name">Product Name</label>
+            <input type="text" id="product-wished-for-name" class="form-control" aria-describedby="product-wished-for-name" placeholder="Enter Name of Product Wished For">
           </div>
           <div class="form-group">
-            <label for="product-description">Product Description</label>
-            <textarea class="form-control" id="product-description" aria-describedby="product-description" placeholder="Enter Product Description"></textarea>
+            <label for="product-wished-for-description">Product Description</label>
+            <textarea class="form-control" id="product-wished-for-description" aria-describedby="product-wished-for-description" placeholder="Enter Description of Product Wished For"></textarea>
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
@@ -66,10 +66,10 @@ want to save --}}
 
  {{!-- list of saved products saved on the side --}}
   <h3>List of Products:</h3>
-        <ul id="product-list" class="list-group">
+        <ul id="product-wished-for-list" class="list-group">
           {{#each products}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.name}}</a>
+            <a href="wishlist/{{this.id}}">{{this.name}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}

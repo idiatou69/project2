@@ -1,30 +1,36 @@
+console.log('js file is linked');
+
+
 // Get references to page elements
-var $productName = $("#product-name");
-var $productDescription = $("#product-description");
+var $productWishedForName = $("#product-wished-for-name");
+var $productWishedForDescription = $("#product-wished-for-description");
 var $submitBtn = $("#submit");
-var $productList = $("#product-list");
+var $productWishedForList = $("#product-wished-for-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
   //save the product info in user list (wishlist.html)
-  saveProduct: function(product) {
+  saveProductToWishList: function(product) {
+    console.log('running save product');
+    
     return $.ajax({
       //how to post in user list instead of on page
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/wishlist",
+      url: "/api/wishlist",
       data: JSON.stringify(product)
     });
+    
   },
-  getProduct: function() {
+  getProductFromWishList: function() {
     return $.ajax({
       url: "api/wishlist",
       type: "GET"
     });
   },
-  deleteProduct: function(id) {
+  deleteProductfromWishList: function(id) {
     //either id of product or set value
     return $.ajax({
       url: "api/wishlist" + id,
@@ -36,16 +42,19 @@ var API = {
 //do we need? yes, for when new form is submitted
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshProductPage = function() {
-  API.getProduct().then(function(data) {
-    var $products = data.map(function(product) {
+  API.getProductFromWishList().then(function(data) {
+
+    console.log("data-", data);
+
+    var $products = data.map(function(productToWishList) {
       var $a = $("<a>")
-        .text(product.name)
-        .attr("href", "/wishlist/" + product.id);
+        .text(productToWishList.name)
+        .attr("href", "/wishlist/" + productToWishList.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": product.id
+          "data-id": productToWishList.id
         })
         .append($a);
 
@@ -58,8 +67,8 @@ var refreshProductPage = function() {
       return $li;
     });
 
-    $productList.empty();
-    $productList.append($products);
+    $productWishedForList.empty();
+    $productWishedForList.append($products);
   });
 };
 
@@ -67,11 +76,13 @@ var refreshProductPage = function() {
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
+  console.log('yayyyy!!!');
+  
   event.preventDefault();
 
   var productChosen = {
-    name: $productName.val().trim(),
-    description: $productDescription.val().trim()
+    name: $productWishedForName.val().trim(),
+    description: $productWishedForDescription.val().trim()
   };
 
   if (!(productChosen.name && productChosen.description)) {
@@ -79,12 +90,12 @@ var handleFormSubmit = function(event) {
     return;
   }
 
-  API.saveProduct(productChosen).then(function() {
+  API.saveProductToWishList(productChosen).then(function() {
     refreshProductPage();
   });
 
-  $productName.val("");
-  $productDescription.val("");
+  $productWishedForName.val("");
+  $productWishedForDescription.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -94,11 +105,11 @@ var handleDeleteBtnClick = function() {
     .parent()
     .attr("data-id");
 
-  API.deleteProduct(idToDelete).then(function() {
+  API.deleteProductfromWishList(idToDelete).then(function() {
     refreshProductPage();
   });
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$productList.on("click", ".delete", handleDeleteBtnClick);
+$productWishedForList.on("click", ".delete", handleDeleteBtnClick);

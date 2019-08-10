@@ -1,24 +1,30 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
+  // Get all products on wish list
   app.get("/api/wishlist", function(req, res) {
-    db.ProductList.findAll({}).then(function(dbProductList) {
-      res.json(dbProductList);
+    console.log('gets hit');
+    
+    db.WishList.findAll({}).then(function(dbWishList) {
+      console.log(dbWishList);
+      
+      res.json(dbWishList);
     });
   });
 
-  // Create a new example
+  // Create a new product on wish list
   app.post("/api/wishlist", function(req, res) {
-    db.ProductList.create(req.body).then(function(dbProductList) {
-      res.json(dbProductList);
+    console.log('route hit!!');
+    
+    db.WishList.create(req.body).then(function(dbWishList) {
+      res.json(dbWishList);
     });
   });
 
-  // Delete an example by id
+  // Delete a product by id
   app.delete("/api/wishlist/:id", function(req, res) {
-    db.ProductList.destroy({ where: { id: req.params.id } }).then(function(dbProductList) {
-      res.json(dbProductList);
+    db.WishList.destroy({ where: { id: req.params.id } }).then(function(dbProductWishList) {
+      res.json(dbWishList);
     });
   });
 };
