@@ -33,14 +33,14 @@ var API = {
   deleteProductfromWishList: function(id) {
     //either id of product or set value
     return $.ajax({
-      url: "api/wishlist" + id,
+      url: "api/wishlist/" + id,
       type: "DELETE"
     });
   }
 };
 
 //do we need? yes, for when new form is submitted
-// refreshExamples gets new examples from the db and repopulates the list
+// refreshProductPage gets new examples from the db and repopulates the list
 var refreshProductPage = function() {
   API.getProductFromWishList().then(function(data) {
 
@@ -59,7 +59,7 @@ var refreshProductPage = function() {
         .append($a);
 
       var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
+        .addClass("btn btn-danger delete")
         .text("ｘ");
 
       $li.append($button);
@@ -101,13 +101,13 @@ var handleFormSubmit = function(event) {
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
 var handleDeleteBtnClick = function() {
+  console.log("delete button clicked")
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
-
   API.deleteProductfromWishList(idToDelete).then(function() {
     refreshProductPage();
-  });
+  }); 
 };
 
 // Add event listeners to the submit and delete buttons
