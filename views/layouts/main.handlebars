@@ -3,54 +3,63 @@
 
 <head>
   <title>Wishlist</title>
+  <!-- meta -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- fonts and icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel=stylesheet>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- stylesheets -->
   <!-- Compiled and minified CSS for materialize-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/signup.css">
   <link rel="stylesheet" href="/styles/login.css">
 </head>
 
-
 <body>
 
-  <!-- Header -->
-  <div class="header">
-    <div class="inner_header">
-      <div class="logo_container">
-        <h1>Wish<span>List</span></h1>
-      </div>
+  <!-- site container-->
+  <div class="container">
 
-      <ul class="navigation">
-        <li><a href="/">Home</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/signup">Sign up!</a></li>
-      </ul>
-    </div>
+    <!-- navbar -->
+    <nav class="black">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo red-text">WishList</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/">Home</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Sign up!</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- // navbar -->
+
+    {{{body}}}
+
+    <!-- materialize footer -->
+    <footer class="page-footer black">
+      <div class="container">
+        <div class="row">
+          <div class="col l4 s12">
+            <h5 class="red-text">Wish<span>List</span></h5>
+          </div>
+          <div class="col l6 offset-l2 s12">
+            <div class="social-media-icons">
+              <i class="fab fa-facebook-square medium"></i>
+              <i class="fab fa-instagram medium"></i>
+              <i class="fab fa-twitter medium"></i>
+              <i class="fab fa-pinterest medium"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- // materialize footer -->
+
   </div>
-
-
-  {{{body}}}
-
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="inner-footer">
-      <div class="logo_container">
-        <h1>Wish<span>List</span></h1>
-      </div>
-      <div class="social-media-icons">
-        <i class="fab fa-facebook-square medium"></i>
-        <i class="fab fa-instagram medium"></i>
-        <i class="fab fa-twitter medium"></i>
-        <i class="fab fa-pinterest medium"></i>
-      </div>
-    </div>
-  </footer>
+  <!-- // site container-->
 
   <script src="https://kit.fontawesome.com/fe613f4734.js"></script>
   <!-- Compiled and minified JavaScript -->
