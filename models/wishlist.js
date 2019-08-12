@@ -3,5 +3,6 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     description: DataTypes.TEXT
   });
+  
   return WishList;
 };          

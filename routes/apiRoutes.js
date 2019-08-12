@@ -22,10 +22,9 @@ module.exports = function(app) {
   });
 
 
+// Next step is to post all saved products on fulllist page
   app.post("/api/fulllist", function(req, res) {
-    console.log('route hit2!!');
-    
-    db.WishList.create(req.body).then(function(dbWishList) {
+    db.Wishlist.create(req.body).then(function(dbWishList) {
       res.json(dbWishList);
     });
   });

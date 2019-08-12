@@ -24,27 +24,39 @@ var API = {
     });
     
   },
+
+  postProductOnFullList: function(product) {
+    return $.ajax({
+      type: "POST",
+      url: "/api/fulllist",
+      data: JSON.stringify(product)
+    });
+  },
+
   getProductFromWishList: function() {
     return $.ajax({
-      url: "api/wishlist",
+      url: "/api/wishlist",
       type: "GET"
     });
   },
   deleteProductfromWishList: function(id) {
     //either id of product or set value
     return $.ajax({
-      url: "api/wishlist/" + id,
+      url: "/api/wishlist/" + id,
       type: "DELETE"
     });
   }
 };
+
+
+
 
 //do we need? yes, for when new form is submitted
 // refreshProductPage gets new examples from the db and repopulates the list
 var refreshProductPage = function() {
   API.getProductFromWishList().then(function(data) {
 
-    console.log("data-", data);
+    // console.log("data-", data);
 
     var $products = data.map(function(productToWishList) {
       var $a = $("<a>")

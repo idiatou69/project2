@@ -38,14 +38,14 @@ module.exports = function (app) {
 
  
 
-  // leads to one product on wish list to see all details
-  app.get("/wishlist", function (req, res) {
-    db.WishList.findAll({}).then(function (dbWishList) {
-      console.log("goes through id 2")
-      res.render("wishlist",{
-        product: dbWishList
-      });
-
+  // leads to all products on wish list to see all details
+  app.get("/fulllist", function (req, res) {
+    db.WishList.findAll({}
+    ).then(function(dbWishList){
+      console.log("goes through id")
+    res.render("fulllist", {
+      product: dbWishList
+    });
     });
   });
 
