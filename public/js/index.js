@@ -3,7 +3,10 @@ console.log('js file is linked');
 
 // Get references to page elements
 var $productWishedForName = $("#product-wished-for-name");
+//color
 var $productWishedForDescription = $("#product-wished-for-description");
+//size
+//rating
 var $submitBtn = $("#submit");
 var $productWishedForList = $("#product-wished-for-list");
 
