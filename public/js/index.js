@@ -56,8 +56,7 @@ var API = {
 var refreshProductPage = function() {
   API.getProductFromWishList().then(function(data) {
 
-    // console.log("data-", data);
-
+    console.log(data)
     var $products = data.map(function(productToWishList) {
       var $a = $("<a>")
         .text(productToWishList.name)
@@ -103,7 +102,9 @@ var handleFormSubmit = function(event) {
   }
 
   API.saveProductToWishList(productChosen).then(function() {
-    refreshProductPage();
+     refreshProductPage();
+    // location.reload()
+    // $("#submit").modal("show")
   });
 
   $productWishedForName.val("");

@@ -12,11 +12,23 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/wishlist", function (req, res) {
+    console.log(' i am the /api/wishlist route')
+    db.WishList.findAll({
+      // include: [db.Post]
+    }).then(function (dbWishList) {
+      console.log('----', dbWishList)
+      res.json(dbWishList)
+    
+    });
+  });
+
   // Create a new product on wish list in index
   app.post("/api/wishlist", function(req, res) {
     console.log('route hit1!');
     
     db.WishList.create(req.body).then(function(dbWishList) {
+      console.log(dbWishList);
       res.json(dbWishList);
     });
   });

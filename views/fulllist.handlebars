@@ -1,7 +1,25 @@
 <main>
 
+<table>
+    {{#each product}}
+    <tr>
+        <th>
+                {{id}}
+        </th>
+        <th>
+            {{name}}
+        </th>
+        <th>
+            {{description}}
+        </th>
+    </tr>
+    {{/each}}
+</table>
+
+{{!-- 
         <div class="project">
         <img src="images/placeholder.jpg">
+        </div>
 
     <div class="project">
         <img src="images/placeholder.jpg">
@@ -33,7 +51,7 @@
 
     <div class="project">
         <img src="images/placeholder.jpg">
-    </div>
+    </div> --}}
 
 </main>
 
