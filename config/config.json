@@ -1,14 +1,18 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "Fatimatou96",
+=======
+    "password": "password",
+>>>>>>> master
     "database": "wishList_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "andrew",
-    "password": "ThisIsMyPassword",
+    "username": "root",
+    "password": "password",
     "database": "wishList_db",
     "host": "localhost",
     "dialect": "mysql",
