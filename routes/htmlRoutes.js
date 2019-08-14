@@ -3,47 +3,26 @@ var db = require("../models");
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    db.Username.findAll({
-      include: [db.Post]
-    }).then(function (dbUsername) {
-      // res.json(dbUsername);
+    console.log(' i am the / route')
+    db.WishList.findAll({
+      // include: [db.Post]
+    }).then(function (dbWishList) {
+      console.log('----')
       res.render("index", {
-        msg: "Hello!"
+        products: dbWishList
       });
     });
   });
 
 
-  // Load wishlist page
-  app.get("/wishlist", function (req, res) {
-    res.render("wishlist", {});
-  });
-
-  // Products page
-  app.get("/products", function (req, res) {
-    // TODO replace this with products list from database
-    var products = [
-      { id: 1, name: "product name" },
-      { id: 2, name: "product name" },
-      { id: 3, name: "product name" },
-      { id: 4, name: "product name" },
-      { id: 5, name: "product name" },
-      { id: 6, name: "product name" },
-      { id: 7, name: "product name" },
-      { id: 8, name: "product name" },
-      { id: 9, name: "product name" },
-      { id: 10, name: "product name" },
-      { id: 11, name: "product name" },
-      { id: 12, name: "product name" },
-      { id: 13, name: "product name" },
-      { id: 14, name: "product name" },
-      { id: 15, name: "product name" },
-      { id: 16, name: "product name" },
-      { id: 17, name: "product name" },
-      { id: 18, name: "product name" }
-    ];
-    res.render("products", {
-      products: products
+  // get one item's details from wish list
+  app.get("/wishlist/:id", function (req, res) {
+    db.WishList.findOne({ where: { id: req.params.id }
+    }).then(function(dbWishList){
+      console.log("goes through id")
+    res.render("wishlist", {
+      product: dbWishList
+    });
     });
   });
 
@@ -57,16 +36,16 @@ module.exports = function (app) {
     res.render("login", {});
   });
 
-  // Load stores page
-  app.get("/stores", function (req, res) {
-    res.render("stores", {});
-  });
+ 
 
-
-  // Load example page and pass in an example by id
-  app.get("/username/:id", function (req, res) {
-    db.Username.findOne({ where: { id: req.params.id } }).then(function (dbUsername) {
-      res.json(dbUsername);
+  // leads to all products on wish list to see all details
+  app.get("/fulllist", function (req, res) {
+    db.WishList.findAll({}
+    ).then(function(dbWishList){
+      console.log("goes through id")
+    res.render("fulllist", {
+      product: dbWishList
+    });
     });
   });
 

@@ -1,16 +1,42 @@
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+.list-group-item {
 }
 
-main {
-  flex: 1 0 auto;
+#modalTrigger {
+  position: fixed;
+ right: 10px;
+  top: 80px;
 }
 
-/*
-main img {
-  width: 100%;
+#listOfWishedProducts {
+  position: fixed;
+  right: -10px;
+  top: 100px;
+}
+
+#wishedLink {
+  position: relative;
+  right: -80px;
+}
+
+.delete {
+  width: 50px;
+  height: 30px;
+  margin: 10px;
+  position: relative;
+  right: -80px;
+}
+
+img {
+  height: 200pcx;
+  width: 200px;
+}
+
+/* main img {
+  width: 25%;
+}
+
+.productImage {
+  width: 50%;
 }
 
 main>div {
@@ -35,7 +61,7 @@ main>div {
   }
 
   main img {
-    width: 95%;
+    width: 25%;
   }
 }
 
@@ -115,4 +141,15 @@ main>div {
   color: white;
   float: right;
   font-size: 36px;
+} */
+
+    
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
