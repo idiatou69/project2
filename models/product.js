@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         //products  
         allowNull: false,
         validate: {
-          len: [1]
+          len: [1000]
         }
       },
 
