@@ -1,7 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
     var product = sequelize.define("product", {
 
-       
+      store_name: {
+        type: DataTypes.STRING,
+        //products  
+        allowNull: false,
+        validate: {
+          len: [90]
+        }
+      },
       name: {
         type: DataTypes.STRING,
         //products  
@@ -10,12 +17,13 @@ module.exports = function(sequelize, DataTypes) {
           len: [1]
         }
       },
-      url: {
+
+      gender: {
         type: DataTypes.STRING,
         allowNull: false,
         //must have an input
         validate: {
-          len: [1]
+          len: [70]
 
         }
       },
@@ -25,24 +33,16 @@ module.exports = function(sequelize, DataTypes) {
         //products  
         allowNull: false,
         validate: {
-          len: [1]
+          len: [4]
         }
       },
 
-      stores: {
-        type: DataTypes.STRING,
-        //products  
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
-      },
       image_url: {
         type: DataTypes.STRING,
         //products  
         allowNull: false,
         validate: {
-          len: [1]
+          len: [1000]
         }
       },
       
@@ -51,7 +51,7 @@ module.exports = function(sequelize, DataTypes) {
         //products  
         allowNull: false,
         validate: {
-          len: [1]
+          len: [1000]
         }
       }
 
@@ -59,13 +59,7 @@ module.exports = function(sequelize, DataTypes) {
     });
   
     product.associate = function(models){
-      //stores(url & category) belongs to one Username
-      product.belongsTo(models.store, {
-        foreignKey: {
-          allowNull: false
-          //cannot create stores without usename
-        }
-      });
+      
     };
   
 
