@@ -1,61 +1,31 @@
 <main>
 
-<table>
-    
-    <tr>
-        <th>
-                <p>ID: </p>
-        </th>
-        <th>
-           <p> STORE ID: </p>
-        </th>
-        <th>
-            <p>NAME:</p>
-        </th>
-        <th>
-            <p>COLOR:</p>
-        </th>
-        <th>
-            <p>SIZE:</p>
-        </th>
-        <th>
-            <p>RATING:</p>
-        </th>
-        <th>
-            <P>DESCRIPTION</P>
-        </th>
-    </tr>
     {{#each product}}
-    <tr>
-        <th>
-                {{id}}
-        </th>
-        <th>
-            {{store_id}}
-        </th>
-        <th>
-            {{name}}
-        </th>
-        <th>
-            {{color}}
-        </th>
-        <th>
-            {{size}}
-        </th>
-        <th>
-            {{rating}}
-        </th>
-        <th>
-            {{description}}
-        </th>
-    </tr>
+
+
+     <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="/images/placeholder.jpg">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Wish List Item {{id}}<i class="material-icons right">more_vert</i></span>
+      {{!-- <p><a href="#">This is a link</a></p> --}}
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Wish List Item {{id}} <i class="material-icons right">close</i></span>
+      <p>STORE ID: {{store_id}} <br> NAME: {{name}} <br> COLOR: {{color}} <br> SIZE: {{size}} <br> RATING: {{rating}} <br> DESCRIPTION: {{description}}  </p>
+    </div>
+  </div>
+    
+   
+   
     {{/each}}
-</table>
 
 
-        <div class="project">
+
+        {{!-- <div class="project">
         <img src="/images/placeholder.jpg">
-        </div>
+        </div> --}}
 
     <a href="/">← Back To Home</a><br>
      <a href="/stores">← Back To Stores</a><br>
