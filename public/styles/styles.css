@@ -26,7 +26,12 @@
   right: -80px;
 }
 
-main img {
+img {
+  height: 200pcx;
+  width: 200px;
+}
+
+/* main img {
   width: 25%;
 }
 
@@ -136,4 +141,15 @@ main>div {
   color: white;
   float: right;
   font-size: 36px;
+} */
+
+    
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
