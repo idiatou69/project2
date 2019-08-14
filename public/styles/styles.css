@@ -11,7 +11,7 @@
   position: fixed;
   right: -10px;
   top: 100px;
-} 
+}
 
 #wishedLink {
   position: relative;
@@ -26,20 +26,12 @@
   right: -80px;
 }
 
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
-/*
 main img {
-  width: 100%;
+  width: 25%;
+}
+
+.productImage {
+  width: 50%;
 }
 
 main>div {
@@ -64,7 +56,7 @@ main>div {
   }
 
   main img {
-    width: 95%;
+    width: 25%;
   }
 }
 
