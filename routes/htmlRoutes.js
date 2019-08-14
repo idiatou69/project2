@@ -36,6 +36,15 @@ module.exports = function (app) {
     res.render("login", {});
   });
 
+   // Load stores page
+   app.get("/stores", function (req, res) {
+    res.render("stores", {});
+  });
+
+   // Load products page
+   app.get("/products", function (req, res) {
+    res.render("products", {});
+  });
  
 
   // leads to all products on wish list to see all details
