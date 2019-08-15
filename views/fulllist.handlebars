@@ -1,61 +1,34 @@
 <main>
-
-<table>
-    
-    <tr>
-        <th>
-                <p>ID: </p>
-        </th>
-        <th>
-            <p>NAME:</p>
-        </th>
-        <th>
-            <P>DESCRIPTION</P>
-        </th>
-    </tr>
+<div class="row">
     {{#each product}}
-    <tr>
-        <th>
-                {{id}}
-        </th>
-        <th>
-            {{name}}
-        </th>
-        <th>
-            {{description}}
-        </th>
-    </tr>
+<div class="col s12 m4 l3">
+
+     <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="/images/placeholder.jpg">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">WishList Item {{id}}<i class="material-icons right">more_vert</i></span>
+      {{!-- <p><a href="#">This is a link</a></p> --}}
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">WishList Item {{id}} <i class="material-icons right">close</i></span>
+      <p>STORE ID: {{store_id}} <br> NAME: {{name}} <br> COLOR: {{color}} <br> SIZE: {{size}} <br> RATING: {{rating}} <br> DESCRIPTION: {{description}}  </p>
+    </div>
+  </div>
+    
+   </div>
+   
     {{/each}}
-</table>
 
+</div>
 
-        <div class="project">
+        {{!-- <div class="project">
         <img src="/images/placeholder.jpg">
-        </div>
+        </div> --}}
 
-    {{!-- <div class="project">
-        <img src="images/placeholder.jpg">
-    </div>
-    <div class="project">
-        <img src="images/placeholder.jpg">
-    </div>
-    <div class="project">
-        <img src="images/placeholder.jpg">
-    </div>
-    <div class="project">
-        <img src="images/placeholder.jpg">
-    </div>
-    <div class="project">
-        <img src="images/placeholder.jpg">
-    </div>
-    <div class="project">
-        <img src="images/placeholder.jpg">
-    </div>
-    <div class="project">
-        <img src="images/placeholder.jpg">
-    </div>
-    <div class="project">
-        <img src="images/placeholder.jpg">
-    </div>  --}}
+    <a href="/">← Back To Home</a><br>
+     <a href="/stores">← Back To Stores</a><br>
+      <a href="/products">← Back To Products</a>
 
 </main>

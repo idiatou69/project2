@@ -3,10 +3,11 @@ console.log('js file is linked');
 
 // Get references to page elements
 var $productWishedForName = $("#product-wished-for-name");
-//color
+var $storeIdNumber = $("#store-id-number");
+var $productColor = $("#product-color");
 var $productWishedForDescription = $("#product-wished-for-description");
-//size
-//rating
+var $productSize = $("#product-size");
+var $productRating = $("#product-rating");
 var $submitBtn = $("#submit");
 var $productWishedForList = $("#product-wished-for-list");
 
@@ -95,7 +96,11 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var productChosen = {
+    store_id: $storeIdNumber.val().trim(),
     name: $productWishedForName.val().trim(),
+    color: $productColor.val().trim(),
+    size: $productSize.val().trim(),
+    rating: $productRating.val().trim(),
     description: $productWishedForDescription.val().trim()
   };
 
@@ -108,7 +113,10 @@ var handleFormSubmit = function(event) {
      refreshProductPage();
   
   });
-
+  $productRating.val("");
+  $productSize.val("");
+  $productColor.val("");
+  $storeIdNumber.val("");
   $productWishedForName.val("");
   $productWishedForDescription.val("");
 };
