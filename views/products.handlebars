@@ -1,15 +1,15 @@
 <main>
 
-    {{#each products}}
-        <div class="project">
-            <a href="">
-                {{name}}
-            </a>
-        </div>
-    {{/each}}
+  {{#each products}}
+  <div class="project">
+    <a href="">
+      {{name}}
+    </a>
+  </div>
+  {{/each}}
 
 
- {{!-- modal with form for user to input product information that they
+  {{!-- modal with form for user to input product information that they
 want to save --}}
   <!-- Modal Trigger -->
   <a id="modalTrigger" class="waves-effect waves-light btn modal-trigger" href="#modal1">Add To Wish List</a>
@@ -22,13 +22,13 @@ want to save --}}
       <form class="clearfix mb-4" action="POST">
 
         {{!-- STORE ID - DROP DOWN--}}
-         <div class="form-group">
+        <div class="form-group">
           <label for="store-id-number">Store ID Number</label>
-          <input type="text" id="store-id-number" class="form-control"
-            aria-describedby="store-id-number" placeholder="Enter The Store's Unique ID Number">
+          <input type="text" id="store-id-number" class="form-control" aria-describedby="store-id-number"
+            placeholder="Enter The Store's Unique ID Number">
         </div>
 
-{{!-- PRODUCT NAME - TEXT--}}
+        {{!-- PRODUCT NAME - TEXT--}}
         <div class="form-group">
           <label for="product-wished-for-name">Product Name</label>
           <input type="text" id="product-wished-for-name" class="form-control"
@@ -44,24 +44,23 @@ want to save --}}
         </div>
 
         {{!-- COLOR - TEXT --}}
-         <div class="form-group">
+        <div class="form-group">
           <label for="product-color">Color</label>
-          <input type="text" id="product-color" class="form-control"
-            aria-describedby="product-color" placeholder="Color">
+          <input type="text" id="product-color" class="form-control" aria-describedby="product-color"
+            placeholder="Color">
         </div>
 
-{{!-- SIZE - DROP DOWN --}}
- <div class="form-group">
+        {{!-- SIZE - DROP DOWN --}}
+        <div class="form-group">
           <label for="product-size">Size</label>
-          <input type="text" id="product-size" class="form-control"
-            aria-describedby="product-size" placeholder="Size">
+          <input type="text" id="product-size" class="form-control" aria-describedby="product-size" placeholder="Size">
         </div>
 
-{{!-- RATING - DROP DOWN --}}
+        {{!-- RATING - DROP DOWN --}}
         <div class="form-group">
           <label for="product-rating">Rating</label>
-          <input type="text" id="product-rating" class="form-control"
-            aria-describedby="product-rating" placeholder="Rating">
+          <input type="text" id="product-rating" class="form-control" aria-describedby="product-rating"
+            placeholder="Rating">
         </div>
 
         <button id="submit" class="btn btn-primary float-right">Submit</button>
@@ -86,4 +85,157 @@ want to save --}}
     </ul>
   </div>
 
+
+  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img class="responsive-img" src="/images/1.jpg">
+          <span class="card-title">Product</span>
+        </div>
+        <div class="card-content">
+          <p>Product sizes, colors, and price will be displayed here.</p>
+        </div>
+        <div class="card-action">
+          {{!-- <a href="#">This is a link</a> --}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img class="responsive-img" src="/images/2.jpg">
+          <span class="card-title">Product</span>
+        </div>
+        <div class="card-content">
+          <p>Product sizes, colors, and price will be displayed here.</p>
+        </div>
+        <div class="card-action">
+          {{!-- <a href="#">This is a link</a> --}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img class="responsive-img" src="/images/3.jpg">
+          <span class="card-title">Product</span>
+        </div>
+        <div class="card-content">
+          <p>Product sizes, colors, and price will be displayed here.</p>
+        </div>
+        <div class="card-action">
+          {{!-- <a href="#">This is a link</a> --}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img class="responsive-img" src="/images/4.jpg">
+          <span class="card-title">Product</span>
+        </div>
+        <div class="card-content">
+          <p>Product sizes, colors, and price will be displayed here.</p>
+        </div>
+        <div class="card-action">
+          {{!-- <a href="#">This is a link</a> --}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img class="responsive-img" src="/images/5.jpeg">
+          <span class="card-title">Product</span>
+        </div>
+        <div class="card-content">
+          <p>Product sizes, colors, and price will be displayed here.</p>
+        </div>
+        <div class="card-action">
+          {{!-- <a href="#">This is a link</a> --}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img class="responsive-img" src="/images/6.jpg">
+          <span class="card-title">Product</span>
+        </div>
+        <div class="card-content">
+          <p>Product sizes, colors, and price will be displayed here.</p>
+        </div>
+        <div class="card-action">
+          {{!-- <a href="#">This is a link</a> --}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img class="responsive-img" src="/images/7.jpg">
+          <span class="card-title">Product</span>
+        </div>
+        <div class="card-content">
+          <p>Product sizes, colors, and price will be displayed here.</p>
+        </div>
+        <div class="card-action">
+          {{!-- <a href="#">This is a link</a> --}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img class="responsive-img" src="/images/8.jpeg">
+          <span class="card-title">Product</span>
+        </div>
+        <div class="card-content">
+          <p>Product sizes, colors, and price will be displayed here.</p>
+        </div>
+        <div class="card-action">
+          {{!-- <a href="#">This is a link</a> --}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img class="responsive-img" src="/images/9.jpg">
+          <span class="card-title">Product</span>
+        </div>
+        <div class="card-content">
+          <p>Product sizes, colors, and price will be displayed here.</p>
+        </div>
+        <div class="card-action">
+          {{!-- <a href="#">This is a link</a> --}}
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
