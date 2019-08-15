@@ -28,7 +28,16 @@ var API = {
     });
     
   },
-
+  saveSignUpInput: function (signUpInput) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/username",
+      data: JSON.stringify(example)
+    });
+  },
   postProductOnFullList: function(product) {
     return $.ajax({
       type: "POST",
@@ -133,6 +142,73 @@ var handleDeleteBtnClick = function() {
   }); 
 };
 
+
+// save the user inputs to the db and refresh the list
+var handleSignupFormSubmit = function (event) {
+  event.preventDefault();
+
+  var signUpInput = {
+    firstName: $("#firstName").val().trim(),
+    lastName: $("#lastName").val().trim(),
+    username: $("#uname").val().trim(),
+    gender: $("#gender").val().trim(),
+    email: $("#email").val().trim(),
+    password: $("#psw").val().trim(),
+    repeatPassword: $("#psw-repeat").val().trim()
+  };
+
+  // if (!(signUpInput.firstName && userInput.lastName)) {
+  //   alert("You must enter an example text and description!");
+  //   return;
+  // }
+
+  console.log(signUpInput);
+
+  API.saveSignUpInput(signUpInput).then(function () {
+    // refreshExamples();
+    alert("account created");
+  });
+
+  $exampleText.val("");
+  $exampleDescription.val("");
+};
+
+var handleLoginFormSubmit = function (event) {
+  event.preventDefault();
+
+  var userInput = {
+    name: $exampleText.val().trim(),
+    description: $exampleDescription.val().trim()
+  };
+
+  if (!(example.text && example.description)) {
+    alert("You must enter an example text and description!");
+    return;
+  }
+
+  API.saveExample(example).then(function () {
+    refreshExamples();
+  });
+
+  $exampleText.val("");
+  $exampleDescription.val("");
+};
+
+// handleDeleteBtnClick is called when an example's delete button is clicked
+// Remove the example from the db and refresh the list
+var handleDeleteBtnClick = function () {
+  var idToDelete = $(this)
+    .parent()
+    .attr("data-id");
+
+  API.deleteExample(idToDelete).then(function () {
+    refreshExamples();
+  });
+};
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $productWishedForList.on("click", ".delete", handleDeleteBtnClick);
+$loginBtn.on("click", handleLoginFormSubmit);
+$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$signUpBtn.on("click", handleSignupFormSubmit);
