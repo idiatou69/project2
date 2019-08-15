@@ -1,64 +1,41 @@
-# Wish List
+# Wishlist!
 
-## Take a look
 
-**[Wish List](https://github.com/matthewheimark/project2)** fix with link to deployed project
 
-## Technologies Used
+## About
+"Wishlist" is an online application that allows user to select and bookmark items of clothing from a curated selection of online retailers. It’s easy! Create a sign-up name, login, and select an item from one of our partners to add to your Wishlist. 
 
-| Front End  | Back End | Database  | Testing | Deployment | Other |
-| :--------: | :------: | :-------: | :-----: | :--------: | :---: |
-|    HTML    |   Node   |   MySQL   |  Mocha  |   Heroku   |
-|    CSS     | Express  | Sequelize |  Chai   |
-| javaScript |          |           |
-|   jQuery   |          |           |
-| Handlebars |          |           |
+Below you will find an image of how our application design functions:
 
-## Overview
+![alt text](pageflow.jpg)
+ 
 
-## Criteria
 
-- [x] must use a node and express web server
-- [] Be backed by a MySQL Database an ORM (not necessarily Sequelize)
-- [] Have both GET and POST routes for retrieving and adding new data
-- [] Be deployed using Heroku (with Data)
-- [] Utilize at least one new library, package, or technology that we haven’t discussed
-- [] Have a polished frontend / UI
-- [] Have folder structure that meets MVC Paradigm
-- [] Meet good quality coding standards (indentation, scoping, naming)
-- [] Must not expose sensitive API key information on the server
+##  Technologies Used
 
-## Not Required but Nice to Have
+## Front End: 
+**HTML, CSS, javaScript, jQuery, Handlebars**
 
-- [] utilize handlebars for server side templating
-- [] incorporate authentication (json web tokens, sessions, etc.)
-- [] use an existing public data set to power the database
-- [] create a migration strategy for sharing data across team members, e.g., a seed/schema.sql file
-- [] use try and catch for error handling
+### Back End: 
+**Node Express**
 
-## Presentation Requirement
+### Database: 
+**MySql, Sequelize** 
 
-Formal 10 min presentation must include
+### Testing: 
+**Mocha Chai**
 
-- [] applications overall concept
-- [] motivation for applications development
-- [] design process
-- [] technology used and a brief description of how they work
-- [] a demo
-- [] directions for future development
+### Deployment: 
+**Heroku**
 
-## Grading
+### Other: 
+**Bcrypt**
 
-1. Concept
-2. Design
-3. Functionality
-4. Collaboration
-5. Presentation
 
-## Status
+## Additional information
 
-In Progress.
+We utilized HTML, CSS, javascript, and jQuery in making this application. We also used Node, Express, MySql, and Sequelize. This application was created utilizing handlebars for server side templating. We incorporated authentication (json web tokens, sessions, etc.). We utilized a migration strategy for sharing data utilizing a seed/schema.sql file. We utilized catch and error handling via Mocha Chai. We utilized Bcrypt for password protection. We deployed this application using Heroku. 
 
-## Sources
+# Sources
 
 This project may have code from class activities, office hours notes, or from seeking help from TAs and teachers.
