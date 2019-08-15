@@ -1,7 +1,8 @@
 
-insert into wishList_db.products (name,url,price,images_url,category) values
+
+insert into products (name, url, price, images_url, category) values
 	('Mason Athletic Tapered Rapid Movement Chino', 'https://bananarepublic.gap.com/browse/product.do?pid=876745042&cid=1135879&pcid=35878&grid=pds_3_254_1#pdp-page-content', 37.97, 'https://bananarepublic.gap.com/webcontent/0015/815/653/cn15815653.jpg','Men'),
-    ('Mason Athletic Tapered Rapid Movement Chino', 'https://bananarepublic.gap.com/browse/product.do?pid=876745042&cid=1135879&pcid=35878&grid=pds_3_254_1#pdp-page-content', 37.97, 'https://bananarepublic.gap.com/webcontent/0017/403/551/cn17403551.jpg', 'Men'),
+    ('Slim Legacy Jean', 'https://bananarepublic.gap.com/browse/product.do?pid=488602002&cid=1138042&pcid=13846&grid=pds_0_597_1#pdp-page-content', 98.00, 'https://bananarepublic.gap.com/webcontent/0017/575/287/cn17575287.jpg', 'Men'),
     ('Slim Traveler Pant', 'https://bananarepublic.gap.com/browse/product.do?pid=488420042&cid=1135879&pcid=35878&grid=pds_8_254_1#pdp-page-content', 23.97, 'https://bananarepublic.gap.com/webcontent/0017/620/746/cn17620746.jpg', 'Men'),
     ('Untucked Slim-Fit Tech-Stretch Cotton Shirt', 'https://bananarepublic.gap.com/browse/product.do?pid=455635002&cid=1126378&pcid=44866&grid=pds_5_289_1#pdp-page-content', 89.50, 'https://bananarepublic.gap.com/webcontent/0016/673/454/cn16673454.jpg','Men'),
     ('Untucked Slim-Fit Tech-Stretch Cotton Shirt', 'https://bananarepublic.gap.com/browse/product.do?pid=469332012&cid=1106843&pcid=44866&grid=pds_7_289_1#pdp-page-content' , 61.99, 'https://bananarepublic.gap.com/webcontent/0017/171/663/cn17171663.jpg' ,'Men'),
@@ -17,5 +18,5 @@ insert into wishList_db.products (name,url,price,images_url,category) values
     ('Print Ruche-Shoulder Top', 'https://bananarepublic.gap.com/browse/product.do?pid=472592012&cid=1056191&pcid=5037&grid=pds_67_282_1#pdp-page-content', 69.50, 'https://bananarepublic.gap.com/webcontent/0016/907/490/cn16907490.jpg', 'Women'),
     ('Madison 12-Hour Ankle-Strap Pump', 'https://bananarepublic.gap.com/browse/product.do?pid=491047012&cid=1093558&pcid=29818&grid=pds_0_362_1#pdp-page-content', 128.00, 'https://bananarepublic.gap.com/webcontent/0017/196/535/cn17196535.jpg', 'Women'),
     ('Madison 12-Hour Ankle-Strap Pump', 'https://bananarepublic.gap.com/browse/product.do?pid=491047032&cid=1093558&pcid=29818&grid=pds_4_362_1#pdp-page-content', 128.00, 'https://bananarepublic.gap.com/webcontent/0017/196/575/cn17196575.jpg', 'Women'),
-    ('Ankle-Strap Pump', 'https://bananarepublic.gap.com/browse/product.do?pid=500657002&cid=1093558&pcid=29818&grid=pds_13_362_1#pdp-page-content',138.00,'https://bananarepublic.gap.com/webcontent/0017/195/477/cn17195477.jpg', 'Women' ),
+    ('Ankle-Strap Pump', 'https://bananarepublic.gap.com/browse/product.do?pid=500657002&cid=1093558&pcid=29818&grid=pds_13_362_1#pdp-page-content',138.00,'https://bananarepublic.gap.com/webcontent/0017/195/477/cn17195477.jpg', 'Women' );
     
