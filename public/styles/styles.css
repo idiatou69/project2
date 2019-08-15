@@ -1,4 +1,9 @@
-.list-group-item {
+.card {
+  width: 200px;
+  height: 400px;
+  position: relative;
+  left: 10px;
+  margin: 10px;
 }
 
 #modalTrigger {
