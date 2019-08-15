@@ -1,14 +1,22 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": null,
+=======
+    "password": "password",
+>>>>>>> aab1a264ffb71b6fa4e41373544a4587ca5fe05b
     "database": "wishList_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
+<<<<<<< HEAD
     "password": null,
+=======
+    "password": "password",
+>>>>>>> aab1a264ffb71b6fa4e41373544a4587ca5fe05b
     "database": "wishList_db",
     "host": "localhost",
     "dialect": "mysql",
