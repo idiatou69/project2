@@ -4,19 +4,76 @@ var passport = require("passport");
 var  checkAuth  = require("../config/auth-check")
 
 module.exports = function (app) {
+
+
+  // delete request from wishlist 
+  app.delete("/wishlist", function (req, res) {
+    
+    var id = parseInt(req.body.productId);
+    db.wishlistItem.destroy({
+      where: {
+        productId : id,
+        userId : req.user.id
+      }
+  })
+  
+})
+
+
   // Load index page
   app.get("/", function (req, res) {
-    console.log(' i am the / route')
-    db.WishList.findAll({
-      // include: [db.Post]
-    }).then(function (dbWishList) {
-      console.log('----')
-      res.render("index", {
-        products: dbWishList
-      });
+    res.render("welcome")
+  });
+
+
+  // Products page
+  app.get("/products",checkAuth, function (req, res) {
+    // TODO replace this with products list from database
+    db.product.findAll().then(function (products) {
+      res.render("products", {products})
+    
     });
   });
 
+  // Load signup page
+  app.get("/signup", function (req, res) {
+    res.render("signup", {});
+  });
+
+  // Load login page
+  app.get("/login", function (req, res) {
+    res.render("login", {});
+  });
+  //  logout go back to login 
+  app.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/login');
+  });
+
+  // Load stores page
+  app.get("/stores", checkAuth,  function (req, res) {
+    res.render("stores");
+  });
+  app.get("/welcome", function (req, res) {
+    res.render("welcome", {});
+  });
+  // load wishlist 
+  app.get("/wishlist", checkAuth , function (req, res) {
+    var userId = req.user.id;
+
+    db.wishlistItem.findAll({
+      where: { userId: userId },
+      include: [{
+          model: db.product,
+          where: { id : db.Sequelize.col('wishlistItem.productId') }
+      }]
+  }).then(function (wishlist) {
+    wishlist.username = req.user.name;
+      res.render("wishlist",{wishlist})
+   })
+    
+  });
+  // sign up post 
   app.post("/signup", function (req, res) {
     var { name, email, password, password2 } = req.body;
     db.user.findOne({ where: { email: email } }).then(function (wishList_db) {
@@ -53,84 +110,34 @@ module.exports = function (app) {
       });
     })(req, res, next);
   });
-
-  // Load signup page
-  app.get("/signup", function (req, res) {
-    res.render("signup", {});
-  });
-
-  // Load login page
-  app.get("/login", function (req, res) {
-    res.render("login", {});
-  });
-  //  logout go back to login 
-  app.get('/logout', function (req, res) {
-    req.logout();
-    res.redirect('/login');
-  });
-
-  app.get("/welcome", function (req, res) {
-    res.render("welcome", {});
-  });
-
-  // get one item's details from wish list
-  app.get("/wishlist/:id", function (req, res) {
-    db.WishList.findOne({ where: { id: req.params.id }
-    }).then(function(dbWishList){
-      console.log("goes through id")
-    res.render("wishlist", {
-      product: dbWishList
-    });
-    });
-  });
-
-  // Load signup page
-  app.get("/signup", function (req, res) {
-    res.render("signup", {});
-  });
-
-  // Load login page
-  app.get("/login", function (req, res) {
-    res.render("login", {});
-  });
-
-   // Load stores page
-   app.get("/stores", function (req, res) {
-    res.render("stores", {});
-  });
-
-   // Load products page
-   app.get("/products", function (req, res) {
-    res.render("products", {});
-  });
- 
-
-  // leads to all products on wish list to see all details
-  app.get("/fulllist", function (req, res) {
-    db.WishList.findAll({}
-    ).then(function(dbWishList){
-      console.log("goes through id")
-    res.render("fulllist", {
-      product: dbWishList
-    });
-    });
-  });
-
-  app.get("/wishlist", checkAuth , function (req, res) {
-    var userId = req.user.id;
-
-    db.wishlistItem.findAll({
-      where: { userId: userId },
-      include: [{
-          model: db.product,
-          where: { id : db.Sequelize.col('wishlistItem.productId') }
-      }]
-  }).then(function (wishlist) {
-    wishlist.username = req.user.name;
-      res.render("wishlist",{wishlist})
-   })
+  // stores post request 
+  app.post("/stores", function (req, res) {
+    console.log(req.body.storeId);
+    db.product.findAll({ where: { storeId: req.body.storeId } }).then(function (products) {
+      res.header("Content-Type",'application/json');
+      res.send(JSON.stringify(products));
+      
+    })
     
   });
+  // put request stors 
+  app.put("/stores", function (req, res) {
+    var productId = parseInt(req.body.productId);
+    var userId = req.user.id;
+    db.wishlistItem.create({ productId : productId , userId : userId}).then(function (whishitems) {
+      console.log(whishitems)
+    })
+  })
+
+  // put request products 
+  app.put("/products", function (req, res) {
+    var productId = parseInt(req.body.productId);
+    var userId = req.user.id;
+    db.wishlistItem.create({ productId : productId , userId : userId}).then(function (whishitems) {
+      console.log(whishitems)
+    })
+  })
+  
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");
