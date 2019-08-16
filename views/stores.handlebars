@@ -1,11 +1,23 @@
+<nav class="black">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo red-text">wish<b>List</b></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/wishlist">wishlist</a></li>
+        <li><a href="/stores">Stores</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- // navbar -->
 <main>
-    <div id="stores" class="row">
-        <div class="col s12 m6 l4 xl2">
+    <div id="stores" class="row" >
+        <div class="col s12 m6 l4 xl3" >
             <div class="card">
                 <div class="card-image">
-                    <img class="responsive-img" src="images/bananarepubliclogo.jpg" alt="banana republic">
+                    <img  src="images/bananarepubliclogo.jpg" alt="banana republic">
                     <span class="card-title">Banana Republic</span>
-                    <a href="#" class="btn-floating halfway-fab waves-effect waves-light red"><i
+                    <a href="#" class="btn-floating halfway-fab waves-effect waves-light red" id="banana"><i
                             class="material-icons">add</i></a>
                 </div>
                 <div class="card-content">
@@ -13,11 +25,13 @@
                         because I require little markup to use effectively.</p>
                 </div>
             </div>
+          </div>
+          <div class="col s12 m6 l4 xl3" >
             <div class="card">
                 <div class="card-image">
-                    <img class="responsive-img" src="images/jcrewlogo.png" alt="j crew">
+                    <img src="images/jcrewlogo.png" alt="j crew">
                     <span class="card-title">J.Crew</span>
-                    <a href="#" class="btn-floating halfway-fab waves-effect waves-light red"><i
+                    <a href="#" class="btn-floating halfway-fab waves-effect waves-light red" id="jcrew"><i
                             class="material-icons">add</i></a>
                 </div>
                 <div class="card-content">
@@ -25,11 +39,13 @@
                         because I require little markup to use effectively.</p>
                 </div>
             </div>
+            </div>
+            <div class="col s12 m6 l4 xl3" >
             <div class="card">
                 <div class="card-image">
-                    <img class="responsive-img" src="images/cos.png" alt="cos">
+                    <img  src="images/cos.png" alt="cos">
                     <span class="card-title">COS</span>
-                    <a href="#" class="btn-floating halfway-fab waves-effect waves-light red"><i
+                    <a href="#" class="btn-floating halfway-fab waves-effect waves-light red" id="cos"><i
                             class="material-icons">add</i></a>
                 </div>
                 <div class="card-content">
@@ -40,3 +56,20 @@
         </div>
     </div>
 </main>
+<footer class="page-footer black">
+    <div class="container">
+      <div class="row">
+        <div class="col l4 s12">
+          <h5 class="red-text">wish<b>List</b></h5>
+        </div>
+        <div class="col l6 offset-l2 s12">
+          <div class="social-media-icons">
+            <i class="fab fa-facebook-square medium"></i>
+            <i class="fab fa-instagram medium"></i>
+            <i class="fab fa-twitter medium"></i>
+            <i class="fab fa-pinterest medium"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
