@@ -1,49 +1,37 @@
 var db = require("../models");
+var bcrypt = require("bcrypt");
+var passport = require("passport");
+var  checkAuth  = require("../config/auth-check")
 
 module.exports = function (app) {
+
+
+  // delete request from wishlist 
+  app.delete("/wishlist", function (req, res) {
+    
+    var id = parseInt(req.body.productId);
+    db.wishlistItem.destroy({
+      where: {
+        productId : id,
+        userId : req.user.id
+      }
+  })
+  
+})
+
+
   // Load index page
   app.get("/", function (req, res) {
-    db.Username.findAll({
-      include: [db.Post]
-    }).then(function (dbUsername) {
-      // res.json(dbUsername);
-      res.render("index", {
-        msg: "Hello!"
-      });
-    });
+    res.render("welcome")
   });
 
-
-  // Load wishlist page
-  app.get("/wishlist", function (req, res) {
-    res.render("wishlist", {});
-  });
 
   // Products page
-  app.get("/products", function (req, res) {
+  app.get("/products",checkAuth, function (req, res) {
     // TODO replace this with products list from database
-    var products = [
-      { id: 1, name: "product name" },
-      { id: 2, name: "product name" },
-      { id: 3, name: "product name" },
-      { id: 4, name: "product name" },
-      { id: 5, name: "product name" },
-      { id: 6, name: "product name" },
-      { id: 7, name: "product name" },
-      { id: 8, name: "product name" },
-      { id: 9, name: "product name" },
-      { id: 10, name: "product name" },
-      { id: 11, name: "product name" },
-      { id: 12, name: "product name" },
-      { id: 13, name: "product name" },
-      { id: 14, name: "product name" },
-      { id: 15, name: "product name" },
-      { id: 16, name: "product name" },
-      { id: 17, name: "product name" },
-      { id: 18, name: "product name" }
-    ];
-    res.render("products", {
-      products: products
+    db.product.findAll().then(function (products) {
+      res.render("products", {products})
+    
     });
   });
 
@@ -56,21 +44,100 @@ module.exports = function (app) {
   app.get("/login", function (req, res) {
     res.render("login", {});
   });
+  //  logout go back to login 
+  app.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/login');
+  });
 
   // Load stores page
-  app.get("/stores", function (req, res) {
-    res.render("stores", {});
+  app.get("/stores", checkAuth,  function (req, res) {
+    res.render("stores");
   });
+  app.get("/welcome", function (req, res) {
+    res.render("welcome", {});
+  });
+  // load wishlist 
+  app.get("/wishlist", checkAuth , function (req, res) {
+    var userId = req.user.id;
 
-
-  // Load example page and pass in an example by id
-  app.get("/username/:id", function (req, res) {
-    db.Username.findOne({ where: { id: req.params.id } }).then(function (dbUsername) {
-      res.json(dbUsername);
+    db.wishlistItem.findAll({
+      where: { userId: userId },
+      include: [{
+          model: db.product,
+          where: { id : db.Sequelize.col('wishlistItem.productId') }
+      }]
+  }).then(function (wishlist) {
+    wishlist.username = req.user.name;
+      res.render("wishlist",{wishlist})
+   })
+    
+  });
+  // sign up post 
+  app.post("/signup", function (req, res) {
+    var { name, email, password, password2 } = req.body;
+    db.user.findOne({ where: { email: email } }).then(function (wishList_db) {
+      if (wishList_db == null) {
+        bcrypt.genSalt(10, function (err, salt) {
+          bcrypt.hash(password, salt, function (err, hash) {
+            if (err) throw err;
+            hashedPass = hash;
+            var newUser = {
+              name: name,
+              email: email,
+              password: hashedPass,
+            }
+            db.user.create(newUser).then(function (wishList_db) {
+              res.sendStatus(200);
+              console.log("new user added");
+            })
+          });
+        })
+      } else {
+        res.sendStatus(202);
+        console.log("failed to add a new user: email already exist");
+      }
     });
+  })
+  // login post request 
+  app.post("/login", function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+      if (err) { return next(err); }
+      if (!user) { return res.send(info) }
+      req.logIn(user, function(err) {
+        if (err) { return next(err); }
+        return res.send({message: "success"});
+      });
+    })(req, res, next);
   });
+  // stores post request 
+  app.post("/stores", function (req, res) {
+    console.log(req.body.storeId);
+    db.product.findAll({ where: { storeId: req.body.storeId } }).then(function (products) {
+      res.header("Content-Type",'application/json');
+      res.send(JSON.stringify(products));
+      
+    })
+    
+  });
+  // put request stors 
+  app.put("/stores", function (req, res) {
+    var productId = parseInt(req.body.productId);
+    var userId = req.user.id;
+    db.wishlistItem.create({ productId : productId , userId : userId}).then(function (whishitems) {
+      console.log(whishitems)
+    })
+  })
 
-
+  // put request products 
+  app.put("/products", function (req, res) {
+    var productId = parseInt(req.body.productId);
+    var userId = req.user.id;
+    db.wishlistItem.create({ productId : productId , userId : userId}).then(function (whishitems) {
+      console.log(whishitems)
+    })
+  })
+  
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");

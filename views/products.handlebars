@@ -1,11 +1,57 @@
-<main>
+<nav class="black">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo red-text">wish<b>List</b></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/wishlist">wishlist</a></li>
+        <li><a href="/stores">Stores</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
 
+<main>
+  <div id="stores" class="row">
     {{#each products}}
-        <div class="project">
-            <a href="">
-                {{name}}
-            </a>
-        </div>
+         <div class="col s12 m6 l4 xl3" >
+            <div class="card">
+                <div class="card-image">
+                    <img  src="{{image_url}}" alt="banana republic">
+                    <span class="card-title" style="color: black">{{name}}</span>
+                    <a href="#" class="btn-floating halfway-fab waves-effect waves-light red addwishp" id="addwish" data-id="{{id}}"><i
+                            class="material-icons">add</i></a>
+                </div>
+                <div class="card-content">
+                    <p>gender: {{gender}}</p>
+                    <p>price: {{price}}$</p>
+                    <p>category: {{category}}</p>
+                    <p><a href="{{url}}">Visit Website</a></p>
+                </div>
+            </div>
+          </div>
     {{/each}}
+<<<<<<< HEAD
 
 </main>
+=======
+  </div>
+</main>
+<!-- footer -->
+  <footer class="page-footer black">
+    <div class="container">
+      <div class="row">
+        <div class="col l4 s12">
+          <h5 class="red-text">wish<b>List</b></h5>
+        </div>
+        <div class="col l6 offset-l2 s12">
+          <div class="social-media-icons">
+            <i class="fab fa-facebook-square medium"></i>
+            <i class="fab fa-instagram medium"></i>
+            <i class="fab fa-twitter medium"></i>
+            <i class="fab fa-pinterest medium"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+>>>>>>> master
